@@ -50,7 +50,13 @@ def _(mo):
 def fibonacci(n):
     if n < 2:
         return n
-    return fibonacci(n - 1) + fibonacci(n - 2)
+
+    a, b = 0, 1
+
+    for _ in range(2, n + 1):
+        a, b = b, a + b
+
+    return b
 
 
 @app.cell
@@ -96,6 +102,36 @@ def _(mo, n_input):
         f"**F({n_input.value}) = {fibonacci(n_input.value)}**"
     )
     return
+
+
+@app.cell
+def _(mo):
+    mo.md("""
+    ## Large-value tests
+
+    These tests serve two purposes:
+
+    1. **Correctness after optimization**
+       We verify that the function still returns known Fibonacci values for larger inputs.
+
+    2. **Performance motivation**
+       We use a much larger input to reveal the limitations of the naive recursive implementation
+       before refactoring it for better performance.
+    """)
+    return
+
+
+@app.function
+def test_fibonacci_large_values():
+    assert fibonacci(10) == 55
+    assert fibonacci(20) == 6765
+    assert fibonacci(30) == 832040
+
+
+@app.function
+def test_fibonacci_large_recurrence():
+    n = 1000
+    assert fibonacci(n) == fibonacci(n - 1) + fibonacci(n - 2)
 
 
 if __name__ == "__main__":
