@@ -1,0 +1,24 @@
+[project]
+name = "fibonacci-tdd-kata"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "malak khalil", email = "malak.khalil@lau.edu" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+fibonacci-tdd-kata = "fibonacci_tdd_kata:main"
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "marimo>=0.24.2",
+    "pytest>=9.1.1",
+    "ruff>=0.16.8",
+]
