@@ -48,15 +48,20 @@ def _(mo):
 
 @app.function
 def fibonacci(n):
-    if n < 2:
-        return n
+    def fib_pair(k):
+        if k == 0:
+            return 0, 1
 
-    a, b = 0, 1
+        a, b = fib_pair(k // 2)
 
-    for _ in range(2, n + 1):
-        a, b = b, a + b
+        c = a * (2 * b - a)
+        d = a * a + b * b
 
-    return b
+        if k % 2 == 0:
+            return c, d
+        return d, c + d
+
+    return fib_pair(n)[0]
 
 
 @app.cell
@@ -132,6 +137,20 @@ def test_fibonacci_large_values():
 def test_fibonacci_large_recurrence():
     n = 1000
     assert fibonacci(n) == fibonacci(n - 1) + fibonacci(n - 2)
+
+
+@app.function
+# Large-scale performance and correctness test:
+# Verifies that the optimized implementation can handle n = 10^7.
+# Two consecutive Fibonacci numbers are always coprime.
+def test_fibonacci_very_large():
+    import math
+
+    n = 10**7
+    fn = fibonacci(n)
+    fn_next = fibonacci(n + 1)
+
+    assert math.gcd(fn, fn_next) == 1
 
 
 if __name__ == "__main__":
