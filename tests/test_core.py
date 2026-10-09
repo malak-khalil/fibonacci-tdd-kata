@@ -1,4 +1,3 @@
-
 """Tests for the Fibonacci implementation."""
 
 import math
