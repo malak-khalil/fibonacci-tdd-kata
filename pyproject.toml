@@ -41,6 +41,7 @@ target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
+ignore = ["F704"]
 
 [tool.ruff.lint.per-file-ignores]
 "notebooks/*.py" = ["B018", "PLR1711", "F401"]

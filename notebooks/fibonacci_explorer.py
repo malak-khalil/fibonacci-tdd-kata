@@ -11,7 +11,6 @@ app = marimo.App(width="medium")
 with app.setup:
     import marimo as mo
     import matplotlib.pyplot as plt
-
     import micropip
 
     await micropip.install("fibonacci-tdd-kataa==0.1.0")
