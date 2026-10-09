@@ -89,13 +89,7 @@ def _():
 
 @app.cell
 def _(mo):
-    n_input = mo.ui.number(
-        start=0,
-        stop=30,
-        step=1,
-        value=10,
-        label="n"
-    )
+    n_input = mo.ui.number(start=0, stop=30, step=1, value=10, label="n")
 
     n_input
     return (n_input,)
@@ -103,9 +97,7 @@ def _(mo):
 
 @app.cell
 def _(mo, n_input):
-    mo.md(
-        f"**F({n_input.value}) = {fibonacci(n_input.value)}**"
-    )
+    mo.md(f"**F({n_input.value}) = {fibonacci(n_input.value)}**")
     return
 
 
