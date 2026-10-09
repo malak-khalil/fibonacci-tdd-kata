@@ -1,24 +1,30 @@
+
 [project]
 name = "fibonacci-tdd-kata"
 version = "0.1.0"
-description = "Add your description here"
+description = "A TDD kata: Fibonacci, from notebook exploration to a tested, published package"
 readme = "README.md"
+requires-python = ">=3.12"
 authors = [
     { name = "malak khalil", email = "malak.khalil@lau.edu" }
 ]
-requires-python = ">=3.12"
 dependencies = []
 
-[project.scripts]
-fibonacci-tdd-kata = "fibonacci_tdd_kata:main"
-
 [build-system]
-requires = ["uv_build>=0.12.17,<0.13.0"]
-build-backend = "uv_build"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fibonacci_tdd_kata"]
 
 [dependency-groups]
 dev = [
-    "marimo>=0.24.2",
     "pytest>=9.1.1",
+    "pytest-cov>=5.0",
     "ruff>=0.16.8",
+    "marimo>=0.24.2",
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
