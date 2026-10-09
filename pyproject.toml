@@ -25,6 +25,7 @@ dev = [
     "ruff>=0.16.8",
     "marimo>=0.24.2",
     "mypy>=2.4.0",
+    "matplotlib>=3.11.2",
 ]
 
 [tool.pytest.ini_options]
