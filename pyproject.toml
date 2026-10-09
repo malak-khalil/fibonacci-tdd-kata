@@ -11,6 +11,9 @@ authors = [
 ]
 dependencies = []
 
+[project.scripts]
+fibonacci-kata = "fibonacci_tdd_kata.cli:main"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
